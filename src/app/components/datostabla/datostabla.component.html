@@ -1,0 +1,31 @@
+<mat-card class="w-4/5 mx-auto mt-8">
+  <mat-card-content>
+
+    <div class="demo-button-container">
+      <button mat-raised-button (click)="agregarArticulo()" 
+      class="demo-button bg-green-500 text-white py-2 px-8 rounded-md duration-300 hover:bg-green-600">Add data</button>
+    </div>
+    <table class="table-auto border-collapse border border-slate-400 w-11/12 mx-auto text-center md:w-4/5">
+      <thead class="bg-black text-white text-lg">
+        <tr>
+          <!-- <th class="border border-slate-300 py-3">ID</th> -->
+          <th class="border border-slate-300 py-3">Código</th>
+          <th class="border border-slate-300 py-3">Descripción</th>
+          <th class="border border-slate-300 py-3">Precio</th>
+          <th class="border border-slate-300 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let arti of articulo" class="group/item hover:bg-blue-100">
+          <td class="border border-slate-300">{{arti.codigo}}</td>
+          <td class="border border-slate-300">{{arti.descripcion}}</td>
+          <td class="border border-slate-300">S/. {{arti.precio}}</td>
+          <td class="border border-slate-300">
+            <button class="bg-red-500 duration-300 tex-white px-4 py-2 rounded-xl text-white hover:bg-red-700" (click)="onClickDelete(arti)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-card-content>
+</mat-card>
