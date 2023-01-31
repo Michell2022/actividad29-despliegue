@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Articulos } from 'src/app/interfaces/interface';
 import { ArticulosServiceService } from 'src/app/services/articulos-service.service';
+import Swal from 'sweetalert2';
 import { DialogComponent } from '../dialog/dialog.component';
 
 
@@ -35,8 +36,29 @@ export class DatostablaComponent implements OnInit{
 
   //ELIMINAR EL doc DE ESTA BASE DE DATOS CON EL id.
   onClickDelete(articulo:Articulos){
-    const response = this.actiService.deleteArticulo(articulo)
-    console.log(response);
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, bórralo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        //LOS DATOS SE ELIMINARAN SOLO SI DA EN SI
+        const response = this.actiService.deleteArticulo(articulo)
+        console.log(response);
+
+        Swal.fire(
+          'Eliminado!',
+          'Su archivo ha sido eliminado.',
+          'success'
+        )
+      }
+    })
   }
 
 }

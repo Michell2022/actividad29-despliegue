@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ArticulosServiceService } from 'src/app/services/articulos-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dialog',
@@ -30,7 +31,7 @@ export class DialogComponent implements OnInit{
     ngOnInit(): void {
       this.articleForm = this.fb.group({
         codigo: ['', [Validators.required]],
-        descripcion: ['', [Validators.required]],
+        descripcion: ['', [Validators.required, Validators.minLength(3)]],
         precio: ['', [Validators.required]]
       })
     }
@@ -39,7 +40,7 @@ export class DialogComponent implements OnInit{
   onSubmit(){
     const response = this.artiService.addArticulo(this.articleForm.value)
     console.log(response)
-    this.dialogRef.close();
+this.dialogRef.close();
   }
 
 

@@ -1,37 +1,36 @@
 
 <!--  ESTE SERA MI DIALOG QUE APARECERA CUANDO DE CLICK EN AGREGAR  -->
-<mat-card-content>
+<mat-card-content class="w-[300px]">
     <div>
-        <h1>Artículo</h1>
+        <h1 class="text-[30px]">Artículo</h1>
         <form [formGroup]="articleForm">
-            <div class="mb-4">
+            <div class="mb-6">
                 <div>
                     <label for="code">Ingrese código:</label>
                 </div>
                 <div>
-                    <input type="text" name="codigo" id="codigo" formControlName="codigo" class="border w-full px-2">
+                    <input type="text" name="codigo" id="codigo" formControlName="codigo" class="border w-full px-1 py-2 rounded-md ">
                 </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-6">
                 <div>
                     <label for="descrip">Ingrese descripción:</label>
                 </div>
                 <div>
-                    <input type="text" name="descripcion" id="descripcion" formControlName="descripcion"
-                        class="border w-full px-2">
+                    <input type="text" name="descripcion" id="descripcion" formControlName="descripcion" style="text-transform:uppercase" class="border w-full px-1 py-2 rounded-md">
                 </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-6">
                 <div>
                     <label for="price">Ingrese precio:</label>
                 </div>
                 <div>
-                    <input type="number" name="precio" id="precio" formControlName="precio" class="border w-full px-2">
+                    <input type="number" name="precio" id="precio" formControlName="precio" class="border w-full px-1 py-2 rounded-md">
                 </div>
             </div>
             <div class="flex justify-around">
-                <button class="bg-red-500 text-white py-1 px-2 rounded" (click)="cancelar()">Cancelar</button>
-                <button class="bg-green-500 text-white py-1 px-2 rounded" (click)="onSubmit()">Confirmar</button>
+                <button class="bg-red-500 text-white py-2 px-4 rounded duration-300 hover:bg-red-600" (click)="cancelar()">Cancelar</button>
+                <button class="bg-green-500 text-white py-2 px-4 rounded duration-300 hover:bg-green-600" [disabled]="articleForm.invalid" (click)="onSubmit()">Confirmar</button>
             </div>
         </form>
     </div>
